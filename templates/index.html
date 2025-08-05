@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Retro Loader</title>
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: "Courier New", monospace;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        button {
+            background-color: lime;
+            color: black;
+            font-size: 20px;
+            padding: 10px 30px;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 4px;
+            box-shadow: 0 0 5px lime;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #bfff00;
+        }
+    </style>
+</head>
+<body>
+    <button id="startBtn">Click Me</button>
+
+    <div id="imageContainer" style="display: none;">
+        <img id="slowImage" src="/slow-image">
+    </div>
+
+    <audio id="bgAudio" loop>
+        <source src="{{ url_for('static', filename='audio.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const imageContainer = document.getElementById('imageContainer');
+        const audio = document.getElementById('bgAudio');
+
+        startBtn.addEventListener('click', () => {
+            startBtn.style.display = 'none';
+            imageContainer.style.display = 'block';
+            audio.play();
+        });
+    </script>
+</body>
+</html>
